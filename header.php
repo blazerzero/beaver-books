@@ -37,25 +37,6 @@ function checkAuth($doRedirect) {
 
 <?php
 
-$dbhost = 'oniddb.cws.oregonstate.edu';
-$dbname = 'habibelo-db';
-$dbuser = 'habibelo-db';
-$dbpass = 'RcAbWdWDkpj7XNTL';
-
-$mysqli = mysql_connect($dbhost, $dbuser, $dbpass)
-    or die("Error connecting to database server");
-
-mysql_select_db($dbname, $mysqli)
-    or die("Error selecting database: $dbname");
-
-/* watch out for, and remove, extra carriage returns below */
-/*if (!$mysqli->query("create table students(onid varchar(32), primary key(onid))")
- || !$mysqli->query("create table books(onid varchar(32), subject varchar(32), coursenum integer, title varchar(256), author varchar(64), price varchar(16), isbn varchar(64), condition varchar(16), description varchar(512), phone varchar(16), email varchar(64), facebook varchar(64),  primary key(onid), foreign key(onid) references students)")
- ) {
-    printf("Cannot create table(s).\n");
-}*/
-//echo "Successfully created database!";
-//$mysqli->query("create table if not exists students(onid varchar(32), primary key(onid))");
-//$mysqli->query("create table if not exists books(onid varchar(32), subject varchar(32), coursenum integer, title varchar(256), author varchar(64), price varchar(16), isbn varchar(64), condition varchar(16), description varchar(512), phone varchar(16), email varchar(64), facebook varchar(64),  primary key(onid), foreign key(onid) references students)");
+$mysqli = new mysqli("oniddb.cws.oregonstate.edu","habibelo-db","RcAbWdWDkpj7XNTL","habibelo-db");
 
 ?>

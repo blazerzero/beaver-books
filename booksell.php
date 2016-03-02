@@ -62,25 +62,25 @@
               <label>Book Condition:</label>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="condition" id="condition" value="Excellent">
+                  <input type="radio" name="condition" id="cond" value="Excellent">
                   <label>Excellent</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="condition" id="condition" value="Good">
+                  <input type="radio" name="condition" id="cond" value="Good">
                   <label>Good</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="condition" id="condition" value="Fair">
+                  <input type="radio" name="condition" id="cond" value="Fair">
                   <label>Fair</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="condition" id="condition" value="Poor">
+                  <input type="radio" name="condition" id="cond" value="Poor">
                   <label>Poor</label>
                 </div>
               </div>
@@ -121,8 +121,6 @@
 
           <br>
           <input type="submit" class="ui positive button">
-            <p>Submit</p>
-          </input>
         </form>
       </div>
 
@@ -130,3 +128,5 @@
 
   </body>
 </html>
+
+<?php include "./footer.php" ?>

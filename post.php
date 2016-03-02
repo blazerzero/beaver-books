@@ -2,16 +2,17 @@
 
 <?php
 
-if ($sql = $mysqli->prepare("INSERT INTO books (onid, subject, coursenum, title, author, price, isbn, condition, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
+if ($sql = $mysqli->prepare("INSERT INTO books (onid, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
   $sql->bind_param("ssisssssss", $onid, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
 
-  $onid = "habibelo";
+  $onid = htmlspecialchars(checkAuth(false));
   $subject = $_POST["subject"];
   $coursenum = $_POST["coursenum"];
   $title = $_POST["title"];
   $author = $_POST["author"];
   $price = $_POST["price"];
-  $condition = $_POST["condition"];
+  $isbn = $_POST["isbn"];
+  $condition = $_POST["cond"];
   $contact = $_POST["contact"];
   $address = $_POST["address"];
 
@@ -24,3 +25,5 @@ else printf("Error: %s\n", $mysqli->error);
 header("Location: viewbooks.php");
 
 ?>
+
+<?php include "./footer.php" ?>

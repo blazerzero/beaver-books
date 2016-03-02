@@ -48,11 +48,9 @@
               <div class="header"> Title: <?php echo htmlspecialchars($row["title"]) ?> </div>
               <div class="header"> Author: <?php echo htmlspecialchars($row["author"]) ?> </div>
 							<div class="meta">
-								<span class="date">Posted: March 1, 2016</span>
+								<span class="date">Posted: March 1, 2016 by <?php echo htmlspecialchars($row["onid"]) ?></span>
 							</div>
-							<div class="description">
-								<?php echo htmlspecialchars($row["description"]) ?>
-							</div>
+
 							<h3>$<?php echo htmlspecialchars($row["price"]) ?> </h3>
 						</div>
             <div class="extra content">
@@ -90,4 +88,4 @@
   </body>
 </html>
 
-<?php mysqli_close($mysqli); ?>
+<?php include "./footer.php" ?>
