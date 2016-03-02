@@ -30,7 +30,7 @@
     <div class="textbody">
 
       <div class="ui form">
-        <form action="./footer.php" method="POST" id="posting">
+        <form action="./post.php" method="POST" id="posting">
           <div class="fields book">
             <div class="field">
               <label>Subject</label>
@@ -99,7 +99,7 @@
                 <input type="text" placeholder="Give a phone number, email, or social media URL." name="contact" id="contact">
               </div>
             </div>
-            <script>
+        <!--    <script>
 
             $(document).ready(function() {
               $("#posting").submit(function(event) {
@@ -116,13 +116,13 @@
               });
             });
 
-            </script>
+          </script> -->
           </div>
 
           <br>
-          <button class="ui positive button">
+          <input type="submit" class="ui positive button">
             <p>Submit</p>
-          </button>
+          </input>
         </form>
       </div>
 
@@ -130,5 +130,3 @@
 
   </body>
 </html>
-
-<?php include "./footer.php" ?>
