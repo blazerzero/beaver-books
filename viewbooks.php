@@ -2,6 +2,8 @@
 <?php include "./header.php" ?>
 <?php include "./quicknav.php" ?>
 
+<?php if (checkAuth(true) != "") { ?>
+
 <html>
   <head>
     <title>View Books</title>
@@ -35,39 +37,33 @@
     </script> -->
 			<div class="four column row">
 				<?php
-        $sql = "SELECT onid, subject, coursenum, title, author, price, isbn, condition, description, phone, email, facebook FROM books";
-        $result = $mysqli->query($sql);
-
-        if ($result->num_rows > 0) {
-          while ($row = $result->fetch_assoc()) {
+        if ($result = $mysqli->query("select onid,subject,coursenum,title,author,price,isbn,cond,contact,address from books")) {
+          while ($obj = $result->fetch_object()) {
         ?>
 				<div class="column">
 					<div class="ui card books" data-content="Edit" data-variation="basic">
 						<div class="content">
-							<div class="header"> <?php echo htmlspecialchars($row["subject"]) . " " . htmlspecialchars($row["coursenum"]) ?> </div>
-              <div class="header"> Title: <?php echo htmlspecialchars($row["title"]) ?> </div>
-              <div class="header"> Author: <?php echo htmlspecialchars($row["author"]) ?> </div>
+							<div class="header"> <?php echo htmlspecialchars($obj->subject) . " " . htmlspecialchars($obj->coursenum) ?> </div>
+              <div class="header"> Title: <?php echo htmlspecialchars($obj->title) ?> </div>
+              <div class="header"> Author: <?php echo htmlspecialchars($obj->author) ?> </div>
 							<div class="meta">
-								<span class="date">Posted: March 1, 2016 by <?php echo htmlspecialchars($row["onid"]) ?></span>
+								<span class="date">Posted: March 1, 2016 by <?php echo htmlspecialchars($obj->onid) ?></span>
 							</div>
 
-							<h3>$<?php echo htmlspecialchars($row["price"]) ?> </h3>
+							<h3><?php echo htmlspecialchars($obj->price) ?></h3>
+              <h4>Condition: <?php echo htmlspecialchars($obj->cond) ?></h4>
 						</div>
             <div class="extra content">
               Contact Info
               <div class="ui divider"></div>
               <div class="content">
                 <p>
-                  <i class="phone icon square" style="zoom:150%"></i>
-                  <?php echo htmlspecialchars($row["phone"]) ?>
+                  <i class="location arrow icon" style="zoom:150%"></i>
+                  <?php echo htmlspecialchars($obj->address) ?>
                 </p>
                 <p>
-                  <i class="mail icon square" style="zoom:150%"></i>
-                  <?php echo htmlspecialchars($row["email"]) ?>
-                </p>
-                <p>
-                  <i class="facebook icon square" style="zoom:150%"></i>
-                  <?php echo htmlspecialchars($row["facebook"]) ?>
+                  <i class="user icon" style="zoom:150%"></i>
+                  <?php echo htmlspecialchars($obj->contact) ?>
                 </p>
               </div>
             </div>
@@ -77,8 +73,10 @@
 						</div>
 					</div>
 				</div>
-				<?php }
-        else echo "No Books";
+				<?php
+          }
+          $result->close();
+        }
         ?>
 			</div>
 		</div>
@@ -87,5 +85,7 @@
 
   </body>
 </html>
+
+<?php } ?>
 
 <?php include "./footer.php" ?>
