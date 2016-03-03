@@ -33,7 +33,8 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, subject, coursenum, title,
 
 else printf("Error: %s\n", $mysqli->error);
 
-header("Location: viewbooks.php");
-?>
+php include "./footer.php"
 
-<?php include "./footer.php" ?>
+header("Location: viewbooks.php");
+exit();
+?>
