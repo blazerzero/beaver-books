@@ -2,19 +2,13 @@
 
 <?php
 
-/*function IsChecked($chkname,$value) {
-  if(!empty($_POST[$chkname])) {
-    foreach($_POST[$chkname] as $chkval) {
-      if($chkval == $value) return true;
-    }
-  }
-  return false;
-}*/
+$date = time();
 
-if ($sql = $mysqli->prepare("INSERT INTO books (onid, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?)")) {
-  $sql->bind_param("ssisssssss", $onid, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
+if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
+  $sql->bind_param("ssisssssss", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
 
   $onid = htmlspecialchars(checkAuth(false));
+  $dateposted = date("m-d-Y",$date);
   $subject = $_POST["subject"];
   $coursenum = $_POST["coursenum"];
   $title = $_POST["title"];
@@ -35,8 +29,6 @@ else printf("Error: %s\n", $mysqli->error);
 
 ?>
 
-<?php include "./footer.php" ?>
-
 <html>
   <head>
     <link type="text/css" rel="stylesheet" href="./css/stylesheet.css"/>
@@ -50,7 +42,9 @@ else printf("Error: %s\n", $mysqli->error);
     <div class="ui divider"></div>
     <center><div style="margin:2em 2em 2em 2em; font-size:20px">
       <p>Your book has been posted successfully</p>
-      <a href="./viewbooks.php">Back to Book Viewer</a>
+      <a href="./viewbooks.php">Return to Book Viewer</a>
     </div></center>
   </body>
 </html>
+
+<?php include "./footer.php" ?>

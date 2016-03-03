@@ -37,7 +37,7 @@
     </script> -->
 			<div class="four column row">
 				<?php
-        if ($result = $mysqli->query("select onid,subject,coursenum,title,author,price,isbn,cond,contact,address from books")) {
+        if ($result = $mysqli->query("select onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address from books")) {
           while ($obj = $result->fetch_object()) {
         ?>
 				<div class="column">
@@ -47,7 +47,7 @@
               <div class="header"> Title: <?php echo htmlspecialchars($obj->title) ?> </div>
               <div class="header"> Author: <?php echo htmlspecialchars($obj->author) ?> </div>
 							<div class="meta">
-								<span class="date">Posted: March 1, 2016 by <?php echo htmlspecialchars($obj->onid) ?></span>
+								<span class="date">Posted: <?php echo htmlspecialchars($obj->dateposted) ?> by <?php echo htmlspecialchars($obj->onid) ?></span>
 							</div>
 
 							<h3><?php echo htmlspecialchars($obj->price) ?></h3>

@@ -5,6 +5,8 @@
 <?php include "./header.php" ?>
 <?php include "./quicknav.php" ?>
 
+<?php if (checkAuth(true) != "") { ?>
+
 <html>
   <head>
     <title>Books Near You</title>
@@ -238,3 +240,6 @@
 
   </body>
 </html>
+
+<?php } ?>
+<?php include "./footer.php" ?>

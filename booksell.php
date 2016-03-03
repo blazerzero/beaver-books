@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php include "./header.php" ?>
 
+<?php if (checkAuth(true) != "") { ?>
+
 <html>
   <head>
     <title>Sell Your Book</title>
@@ -128,5 +130,7 @@
 
   </body>
 </html>
+
+<?php } ?>
 
 <?php include "./footer.php" ?>
