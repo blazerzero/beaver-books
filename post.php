@@ -31,7 +31,8 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, subject, coursenum, title,
   $price = $_POST["price"];
   $isbn = $_POST["isbn"];
   $condition = "Excellent";
-  $date = echo "<script> datepost(); </script>";
+  $date = echo '<script type = "text/javascript">', 'datepost();', '</script>';
+  echo $date;
   $contact = $_POST["contact"];
   $address = $_POST["address"];
 
