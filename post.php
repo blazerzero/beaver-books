@@ -1,16 +1,15 @@
 <?php include "./header.php" ?>
+<?php date_default_timezone_set("America/Los_Angeles") ?>
 
 <?php
 
-$date = new DateTime();
-echo $date->format('U = m-d-Y H:i:s') . "\n";
+
 
 
 if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
-  $sql->bind_param("sssisssssss", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
+  $sql->bind_param("ssisssssss", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
 
   $onid = htmlspecialchars(checkAuth(false));
-  $dateposted = $date->format('m d, Y');
   $subject = $_POST["subject"];
   $coursenum = $_POST["coursenum"];
   $title = $_POST["title"];
