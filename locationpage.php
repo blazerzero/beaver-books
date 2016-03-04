@@ -3,7 +3,6 @@
 <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="./js-samples/geolocate/geometa.js"></script>
 <?php include "./header.php" ?>
-<?php include "./quicknav.php" ?>
 
 <?php if (checkAuth(true) != "") { ?>
 
@@ -51,7 +50,8 @@
     <ul class="navbar">
       <li><a href="./home.php">Home</a></li>
       <li><a href="./viewbooks.php">View Books</a></li>
-      <li><a href="./booksell.php">Sell Your Book</a></li>
+      <li><a href="./yourbooks.php">Your Books</a></li>
+      <li><a href="./booksell.php">Sell A Book</a></li>
       <li class="active"><a href="./locationpage.php">Books Near You</a></li>
       <li><a href="./about.html">About</a></li>
       <li style="float:right"><a href="./logout.php">Logout</a></li>
@@ -242,4 +242,6 @@
 </html>
 
 <?php } ?>
+<?php include "./quicknav.php" ?>
+
 <?php include "./footer.php" ?>

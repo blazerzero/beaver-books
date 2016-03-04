@@ -4,7 +4,6 @@
 <?php
 
 $date = new DateTime();
-echo $date->format('U = m-d-Y H:i:s') . "\n";
 
 
 if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
@@ -22,6 +21,7 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
 
   $contact = $_POST["contact"];
   $address = $_POST["address"];
+
 
 
   $sql->execute();

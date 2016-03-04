@@ -1,6 +1,7 @@
 <?php //include ("index.php");
-$_SESSION["onidid"] = "";
-session_unset();
+session_start();
+unset($_SESSION);
 session_destroy();
 header("Location: index.html");
+exit;
 ?>

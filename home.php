@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <?php include "./header.php" ?>
-<?php include "./quicknav.php" ?>
 
 <?php
 	if (checkAuth(true) != "") {
@@ -25,6 +24,7 @@
       <ul class="navbar">
         <li class="active"><a href="./home.php">Home</a></li>
 				<li><a href="./viewbooks.php">View Books</a></li>
+				<li><a href="./yourbooks.php">Your Books</a></li>
         <li><a href="./booksell.php">Sell A Book</a></li>
         <li><a href="./locationpage.php">Books Near You</a></li>
         <li><a href="./about.html">About</a></li>
@@ -33,19 +33,15 @@
 
 			<div class="ui divider"></div>
 
-			<center><div>
-	      <p>
-	        <style>
-	          p {
-	            font-size: 16px;
-	            margin: 0 300 0 300;
-	          }
-	        </style>
-	        Beaverbooks is a free to use Book Bazaar, where students can trade
-	      and sell their used textbooks at fair prices and greater convenience.
-	      Login now to experience the fairness and convenience that students deserve!</p>
-	      <br>
-	    </div></center>
+			<center>
+				<div>
+	      	<p style="margin: 20px 200px 20px 200px; font-size:16px">
+	        	Beaverbooks is a free to use Book Bazaar, where students can trade
+	      		and sell their used textbooks at fair prices and greater convenience.
+	      		Login now to experience the fairness and convenience that students deserve!
+					</p>
+	    	</div>
+			</center>
 
 	    <h2 class="ui horizontal divider header">Creators</h2>
 	    <br>

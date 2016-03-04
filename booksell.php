@@ -19,13 +19,14 @@
     <ul class="navbar">
       <li><a href="./home.php">Home</a></li>
       <li><a href="./viewbooks.php">View Books</a></li>
+      <li><a href="./yourbooks.php">Your Books</a></li>
       <li class="active"><a href="./booksell.php">Sell A Book</a></li>
       <li><a href="./locationpage.php">Books Near You</a></li>
       <li><a href="./about.html">About</a></li>
       <li style="float:right"><a href="./logout.php">Logout</a></li>
     </ul>
 
-    <center><h1> Sell Your Book </h1></center>
+    <center><h1> Sell A Book </h1></center>
 
     <div class="ui divider"></div>
 
