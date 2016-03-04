@@ -8,7 +8,6 @@
     return time;
   }
 </script>
-
 <?php
 
 /*function IsChecked($chkname,$value) {
