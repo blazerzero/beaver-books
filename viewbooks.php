@@ -34,7 +34,7 @@
         if ($result = $mysqli->query("select onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address from books")) {
           while ($obj = $result->fetch_object()) {
         ?>
-				<div class="column">
+				<div class="column"><center>
 					<div class="ui card books" data-content="Edit" data-variation="basic" style="display:table-cell">
 						<div class="content">
 							<div class="header"> <?php echo htmlspecialchars($obj->subject) . " " . htmlspecialchars($obj->coursenum) ?> </div>
@@ -63,7 +63,7 @@
             </div>
 					</div>
           <br>
-				</div>
+				</center></div>
 				<?php
           }
           $result->close();

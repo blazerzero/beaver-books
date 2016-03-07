@@ -2,7 +2,7 @@
   <a href="./booksell.php">
     <button class="circular ui icon button one">
       <i class="plus icon"></i>
-      <p>Sell Book</p>
+      <p>Sell A Book</p>
     </button>
   </a>
   <a href="./viewbooks.php">

@@ -30,6 +30,17 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
 
 else printf("Error: %s\n", $mysqli->error);
 
+if ($sql = $mysqli->prepare("INSERT IGNORE INTO users (onid) VALUES (?)")) {
+  $sql->bind_param("s", $onid);
+
+  $sql->execute();
+  $sql->close();
+}
+
+else printf("Error: %s\n", $mysqli->error);
+
+
+
 ?>
 
 <html>

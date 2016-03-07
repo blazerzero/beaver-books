@@ -17,6 +17,7 @@
 
   </head>
   <body>
+		<img src='http://mediad.publicbroadcasting.net/p/kera/files/201510/textbooks_110509_bookstack001_rr_jpg_800x1000_q100.jpg' style="opacity:0.4; position:absolute; z-index:-1; width:100%; height:100%">
     <br><br>
     <left class="sitename"> BEAVERBOOKS </left>
 
@@ -35,24 +36,52 @@
 
 			<center>
 				<div>
-	      	<p style="margin: 20px 200px 20px 200px; font-size:16px">
+	      	<p style="margin: 20px 200px 20px 200px; font-size:40px">
 	        	Beaverbooks is a free to use Book Bazaar, where students can trade
 	      		and sell their used textbooks at fair prices and greater convenience.
-	      		Login now to experience the fairness and convenience that students deserve!
+						<br>
+						You can view all the books students have posted, view the specific books you've posted,
+						or view books that are being sold near you!
 					</p>
 	    	</div>
 			</center>
 
-	    <h2 class="ui horizontal divider header">Creators</h2>
+	    <div class="ui divider"></div>
 	    <br>
-	    <center>
+			<div><center>
+			  <a href="./booksell.php">
+			    <button class="circular ui icon button one" style="zoom:200%">
+			      <i class="plus icon"></i>
+			      <p>Sell A Book</p>
+			    </button>
+			  </a>
+			  <a href="./viewbooks.php">
+			    <button class="circular ui icon button two" style="zoom:200%">
+			      <i class="book icon"></i>
+			      <p>View Books</p>
+			    </button>
+			  </a>
+			  <a href="./locationpage.php">
+			    <button class="circular ui icon button three" style="zoom:200%">
+			      <i class="location arrow icon"></i>
+			      <p>Near You</p>
+			    </button>
+			  </a>
+			  <a href="./logout.php">
+			    <button class="circular ui icon button four" style="zoom:200%">
+			      <i class="arrow right icon"></i>
+			      <p>Logout</p>
+			    </button>
+			  </a>
+			</center></div>
+	    <!-- <center>
 	      <h3>Julian Weisbord</h3>
 	      <h3>Bradley Imai</h3>
 	      <h3>Omeed Habibelahian</h3>
 	      <h3>Brennan Giles</h3>
 	      <h3>Benny Wick</h3>
 	      <h3>Andrew Davis</h3>
-	    </center>
+	    </center> -->
 
 			<script>
 			if ($(window).scrollTop() > 150) {

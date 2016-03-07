@@ -35,7 +35,7 @@
             while ($obj = $result->fetch_object()) {
               if ($obj->onid == htmlspecialchars(checkAuth(false))) {
           ?>
-  				<div class="column">
+  				<div class="column"><center>
   					<div class="ui card books" data-content="Edit" data-variation="basic" style="display:table-cell">
   						<div class="content">
   							<div class="header"> <?php echo htmlspecialchars($obj->subject) . " " . htmlspecialchars($obj->coursenum) ?> </div>
@@ -69,7 +69,7 @@
   					</div>
             <br>
 
-  				</div>
+  				</center></div>
   				<?php
               }
             }
