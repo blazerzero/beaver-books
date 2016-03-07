@@ -2,6 +2,7 @@
 <script type="text/javascript" src="./js-samples"></script>
 <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="./js-samples/geolocate/geometa.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <?php include "./header.php" ?>
 
 <?php if (checkAuth(true) != "") { ?>
@@ -13,34 +14,6 @@
     <link type="text/css" rel="stylesheet" href="./bower_components/semantic/dist/semantic.css"/>
     <link href="./js-samples/geolocate/geolocate.html"/>
     <script type="text/javascript" src="./map.js"></script>
-    <script>
-
-    $(document).ready(function() {
-      $("#current").click(function() {
-        var map = initMap();
-        prepareGeolocation();
-        doGeolocation();
-      });
-
-      $("#submit").click(function() {
-        var map = initMap();
-        var zip = document.getElementById("zip").value;
-        var lat = '';
-        var lng = '';
-
-        geocoder.geocode( {'address': zip}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            lat = results[0].geometry.location.lat();
-            lng = results[0].geometry.location.lng();
-          }
-          else alert("Geocode was not successful for the following reason: " + status);
-        });
-        var latLng = new google.maps.LatLng(lat, lng);
-        map.center = latLng;
-      });
-    });
-
-    </script>
   </head>
   <body>
 
@@ -63,148 +36,82 @@
     <div class="ui divider"></div>
 
     <div class="textbody">
-      <center><p>Here we will use the google maps api with updates to the locations of
-        where people are selling their books</p>
+      <center><p>Click below to see textbooks being sold near you!</p>
 
         <div class="ui form">
-          <button class="ui positive button" id="current">Current Location</button>
+
+              <button class="ui positive button" id="current" onclick= "getLocation()">Current Location</button>
+
+
           <br><br>
-          <div class="ui basic label">OR</div>
-          <br><br>
-          <div class="four wide field">
-            <label>Zip Code</label>
-            <input type="text" placeholder="Zip Code" id="zip">
-          </div>
-          <button class="ui positive button" id="submit">Submit</button>
+
+
         </div></center>
     </div>
 
-    <div id="map"></div>
-    <!-- <script>
-    function initMap() {
-      alert("in initMap");
-      var mapDiv = document.getElementById("map");
-      var map = new google.maps.Map(mapDiv, {
-        center: {lat: 44.563875, lng: -123.279895},
-        zoom: 17,
-      });
-      var marker = new google.maps.Marker({
-        position: map.center,
-        map: map,
-        title: 'You Are Here'
-      });
-      return map;
-    }
 
-    /*function showmap(version) {
-      alert("function called");
-      var map = initMap();
-      if (version === 1) {
-        map.center = getLocation();
-      }
-      if (version === 2) {
-        var zip = document.getElementById("zip").value;
-        var lat = '';
-        var lng = '';
+    <p id="demo"></p>
 
-        geocoder.geocode( {'address': zip}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            lat = results[0].geometry.location.lat();
-            lng = results[0].geometry.location.lng();
-          }
-          else alert("Geocode was not successful for the following reason: " + status);
-        });
-        var latLng = new google.maps.LatLng(lat, lng);
-        map.center = latLng;
-      }
-      map.zoom: 17;
-    }*/
+<center><div id="mapholder"></div></center>
 
-    $("#current").click(function() {
-      var map = initMap();
-      map.center = getLocation();
-      var map = initMap();
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
-    });
+<script>
+///////////////////////////////////////////
+//GET LOCATION SCRIPT FOR CURRENT LOCATION
+//////////////////////////////////////////
+var x = document.getElementById("demo");
+function getLocation() {
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError);
+} else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+}
+}
 
-    $("#submit").click(function() {
-      var zip = document.getElementById("zip").value;
-      var lat = '';
-      var lng = '';
+function showPosition(position) {
+lat = position.coords.latitude;
+lon = position.coords.longitude;
+latlon = new google.maps.LatLng(lat, lon)
+mapholder = document.getElementById('mapholder')
+mapholder.style.height = '500px';
+mapholder.style.width = '750px';
 
-      geocoder.geocode( {'address': zip}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          lat = results[0].geometry.location.lat();
-          lng = results[0].geometry.location.lng();
-        }
-        else alert("Geocode was not successful for the following reason: " + status);
-      });
-      var latLng = new google.maps.LatLng(lat, lng);
-      map.center = latLng;
-    });
+var myOptions = {
+center:latlon,zoom:10,
+mapTypeId:google.maps.MapTypeId.ROADMAP,
+mapTypeControl:false,
+navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
+}
 
-    function getLocation() {
-        if (navigator.geolocation) {
-            var latlng = navigator.geolocation.getCurrentPosition(getPosition, showError);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-        return latlng;
-    }
+var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+}
 
-    function getPosition(position) {
-        var latlon = position.coords.latitude + "," + position.coords.longitude;
-        return latlon;
-    }
+function showError(error) {
+switch(error.code) {
+    case error.PERMISSION_DENIED:
+        x.innerHTML = "User denied the request for Geolocation."
+        break;
+    case error.POSITION_UNAVAILABLE:
+        x.innerHTML = "Location information is unavailable."
+        break;
+    case error.TIMEOUT:
+        x.innerHTML = "The request to get user location timed out."
+        break;
+    case error.UNKNOWN_ERROR:
+        x.innerHTML = "An unknown error occurred."
+        break;
+}
+}
+</script>
 
 
-    function showError(error) {
-        switch(error.code) {
-            case error.PERMISSION_DENIED:
-                x.innerHTML = "User denied the request for Geolocation."
-                break;
-            case error.POSITION_UNAVAILABLE:
-                x.innerHTML = "Location information is unavailable."
-                break;
-            case error.TIMEOUT:
-                x.innerHTML = "The request to get user location timed out."
-                break;
-            case error.UNKNOWN_ERROR:
-                x.innerHTML = "An unknown error occurred."
-                break;
-              }
-        }
-      }
-    }
 
-    /*function map(version) {
-      var lat = 0;
-      var lng = 0;
-      if (version == 1) {
-        latlng = getLocation();
-      }
-      if (version == 2) {
-        var zip;
-        zip = document.getElementById("zip").value;
 
-        lat = '';
-        lng = '';
 
-        geocoder.geocode( { 'address': zip}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            lat = results[0].geometry.location.lat();
-            lng = results[0].geometry.location.lng();
-            } else {
-            alert("Geocode was not successful for the following reason: " + status);
-          });
-        alert('Latitude: ' + lat + ' Logitude: ' + lng);
-      }
-      initMap(lat, lng, latlng);
+    <div id="mapholder"></div>
 
-    }*/
-  </script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
-      async defer></script>
 
     <br>
 
