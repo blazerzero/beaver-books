@@ -38,7 +38,7 @@
   				<div class="column"><center>
   					<div class="ui card books" data-content="Edit" data-variation="basic" style="display:table-cell">
   						<div class="content">
-  							<div class="header"> <?php echo htmlspecialchars($obj->subject) . " " . htmlspecialchars($obj->coursenum) ?> </div>
+  							<div class="header"> Course: <?php echo htmlspecialchars($obj->subject) . " " . htmlspecialchars($obj->coursenum) ?> </div>
                 <div class="header"> Title: <?php echo htmlspecialchars($obj->title) ?> </div>
                 <div class="header"> Author: <?php echo htmlspecialchars($obj->author) ?> </div>
   							<div class="meta">
@@ -63,7 +63,6 @@
                 </div>
               </div>
   						<div class="extra content" style="margin:auto">
-                <button class="ui basic blue button">Edit</button>
                 <button class="ui basic red button" id="delete">Delete</button>
   						</div>
   					</div>

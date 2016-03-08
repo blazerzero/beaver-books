@@ -9,7 +9,7 @@ $date = new DateTime();
 if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
   $sql->bind_param("sssisssssss", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
 
-  $onid = htmlspecialchars(checkAuth(false));
+  $onid = $_POST["onid"];
   $dateposted = $date->format('m-d-Y');
   $subject = $_POST["subject"];
   $coursenum = $_POST["coursenum"];
@@ -17,7 +17,7 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
   $author = $_POST["author"];
   $price = $_POST["price"];
   $isbn = $_POST["isbn"];
-  $condition = "Excellent";
+  $condition = $_POST["cond"];
 
   $contact = $_POST["contact"];
   $address = $_POST["address"];

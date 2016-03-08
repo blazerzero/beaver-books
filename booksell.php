@@ -2,6 +2,7 @@
 <?php include "./header.php" ?>
 
 <?php if (checkAuth(true) != "") { ?>
+<?php $onid = htmlspecialchars(checkAuth(false)); ?>
 
 <html>
   <head>
@@ -35,6 +36,7 @@
       <div class="ui form">
         <form action="./post.php" method="POST" id="posting">
           <div class="fields book">
+            <input type="hidden" name="onid" value=<?php echo $onid ?>>
             <div class="field">
               <label>Subject</label>
               <input type="text" name="subject" id="subject" placeholder="e.g. MTH or math">
@@ -65,25 +67,25 @@
               <label>Book Condition:</label>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="cond1" id="cond" value="Excellent">
+                  <input type="radio" name="cond" id="cond" value="Excellent">
                   <label>Excellent</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="cond2" id="cond" value="Good">
+                  <input type="radio" name="cond" id="cond" value="Good">
                   <label>Good</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="cond3" id="cond" value="Fair">
+                  <input type="radio" name="cond" id="cond" value="Fair">
                   <label>Fair</label>
                 </div>
               </div>
               <div class="field">
                 <div class="ui radio checkbox">
-                  <input type="radio" name="cond4" id="cond" value="Poor">
+                  <input type="radio" name="cond" id="cond" value="Poor">
                   <label>Poor</label>
                 </div>
               </div>
@@ -91,14 +93,14 @@
             <div class="field">
               <label>Selling Location</label>
               <div class="field">
-                <i class="location arrow icon" style="zoom:150%"></i>
+              <!--  <i class="location arrow icon" style="zoom:150%"></i> -->
                 <input type="text" placeholder="Give the full address of where you'd like to sell the book." name="address" id="address">
               </div>
             </div>
             <div class="field">
               <label>Contact Info</label>
               <div class="field">
-                <i class="user icon" style="zoom:150%"></i>
+              <!--  <i class="user icon" style="zoom:150%"></i> -->
                 <input type="text" placeholder="Give a phone number, email, or social media URL." name="contact" id="contact">
               </div>
             </div>
