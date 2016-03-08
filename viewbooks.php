@@ -31,7 +31,7 @@
 
 			<div class="four column row">
 				<?php
-        if ($result = $mysqli->query("select onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address from books")) {
+        if ($result = $mysqli->query("select onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address,lat,lng from books")) {
           while ($obj = $result->fetch_object()) {
         ?>
 				<div class="column"><center>
