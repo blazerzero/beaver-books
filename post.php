@@ -6,8 +6,8 @@
 $date = new DateTime();
 
 
-if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) {
-  $sql->bind_param("sssisssssss", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address);
+if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address, lat, lng) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
+  $sql->bind_param("sssisssssssdd", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address, $lat, $lng);
 
   $onid = $_POST["onid"];
   $dateposted = $date->format('m-d-Y');
