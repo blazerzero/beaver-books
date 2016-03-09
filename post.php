@@ -20,7 +20,7 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
   $sql->bind_param("sssisssssssdd", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address, $lat, $lng);
 
   $onid = $_POST["onid"];
-  $dateposted = $date->format('m-d-Y');
+  $dateposted = $date->format('m-d-Y H:i:s');
   $subject = $_POST["subject"];
   $coursenum = $_POST["coursenum"];
   $title = $_POST["title"];

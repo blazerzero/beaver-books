@@ -10,7 +10,6 @@
     <link type="text/css" rel="stylesheet" href="./bower_components/semantic/dist/semantic.css"/>
     <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Ajax Paginatioin Example</title>
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
