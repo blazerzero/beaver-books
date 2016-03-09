@@ -38,5 +38,6 @@ function checkAuth($doRedirect) {
 <?php
 
 $mysqli = new mysqli("oniddb.cws.oregonstate.edu","habibelo-db","RcAbWdWDkpj7XNTL","habibelo-db");
+$item_per_page 		= 20; //item to display per page
 
 ?>
