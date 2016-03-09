@@ -132,14 +132,14 @@
 
           <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
           <script>
-          alert('should run no matter what');
+
 
           ///////////////////////////////////////////////////////////////////////////
           //Here we will convert the address to latLon, and enter it into the database
           ///////////////////////////////////////////////////////////////////////////
 
           function inputDatabase(){
-            alert('function worked');
+
 
             var geocoder = new google.maps.Geocoder();
             codeAddress();
@@ -152,7 +152,7 @@
 
                       var lat = results[0].geometry.location.lat();
                        var lon = results[0].geometry.location.lng();
-                       alert('Geocode Success!');
+
                        alert(lat);
                        alert(lon);
                        document.getElementById("lat").value = lat;
@@ -164,7 +164,7 @@
                       });
 
 
-                alert('made it');
+                
 
                    }
                  }
