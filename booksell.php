@@ -95,6 +95,7 @@
               <div class="field">
               <!--  <i class="location arrow icon" style="zoom:150%"></i> -->
                 <input type="text" placeholder="Give the full address of where you'd like to sell the book." name="address" id="address">
+                <input class="ui positive button" onclick = "inputDatabase()" value = "Add to Map!">
               </div>
             </div>
             <div class="field">
@@ -126,6 +127,46 @@
 
           <br>
           <input type="submit" class="ui positive button">
+
+          <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+          <script>
+          alert('should run no matter what');
+
+          ///////////////////////////////////////////////////////////////////////////
+          //Here we will convert the address to latLon, and enter it into the database
+          ///////////////////////////////////////////////////////////////////////////
+
+          function inputDatabase(){
+            alert('function worked');
+
+            var geocoder = new google.maps.Geocoder();
+            codeAddress();
+
+                  function codeAddress() {
+                    var address = document.getElementById("address").value;
+
+                    geocoder.geocode( { 'address': address}, function(results, status) {
+                     if (status == google.maps.GeocoderStatus.OK) {
+
+                      var lat = results[0].geometry.location.lat();
+                       var lon = results[0].geometry.location.lng();
+                       alert('Geocode Success!');
+                       alert(lat);
+                       alert(lon);
+                      }
+                       else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                      }
+                      });
+
+
+                alert('made it');
+
+                   }
+                 }
+
+
+          </script>
         </form>
       </div>
 

@@ -5,6 +5,13 @@
 
 $date = new DateTime();
 
+?>
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+// we would put js here if stuff didnt work later
+</script>
+<?php
 
 
 // mysql_query("INSERT INTO books (onid, dateposted) VALUES ('weisborj','Today hi')");
