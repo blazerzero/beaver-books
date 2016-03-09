@@ -32,6 +32,9 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
   $contact = $_POST["contact"];
   $address = $_POST["address"];
 
+  $lat = $_POST["lat"];
+  $lng = $_POST["lng"];
+
 
 
   $sql->execute();
