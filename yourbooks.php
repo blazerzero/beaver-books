@@ -68,25 +68,6 @@
   					</div>
             <br>
 
-            <!-- SCRIPT FOR DELETING DATA: -->
-
-            <script>
-          //  function removebook() {
-              if (confirm("Are you sure want to delete this book?") == TRUE) {
-                <?php
-                $sql = "DELETE FROM books where onid=$obj->onid and dateposted=htmlspecialchars($obj->subject)
-                and subject=htmlspecialchars($obj->subject) and coursenum=htmlspecialchars($obj->coursenum)
-                and title=htmlspecialchars($obj->title) and author=htmlspecialchars($obj->author) and price=htmlspecialchars($obj->price)
-                and cond=htmlspecialchars($obj->cond) and address=htmlspecialchars($obj->address) and contact=htmlspecialcahrs($obj->contact)
-                and isbn=htmlspecialchars($obj->isbn)"
-
-                if ($mysqli->query($sql) === TRUE) ?> alert("Successfully deleted. Reload page to refresh.");
-              }
-            }
-            </script>
-
-
-
   				</center></div>
   				<?php
               }

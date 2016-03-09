@@ -95,6 +95,8 @@
               <div class="field">
               <!--  <i class="location arrow icon" style="zoom:150%"></i> -->
                 <input type="text" placeholder="Give the full address of where you'd like to sell the book." name="address" id="address">
+                <input id="lat" name="lat" type="hidden"></input>
+                <input id="lon" name="lng" type="hidden"></input>
                 <input class="ui positive button" onclick = "inputDatabase()" value = "Add to Map!">
               </div>
             </div>
@@ -153,6 +155,8 @@
 
                        alert(lat);
                        alert(lon);
+                       document.getElementById("lat").value = lat;
+                       document.getElementById("lon").value = lon;
                       }
                        else {
                         alert("Geocode was not successful for the following reason: " + status);
@@ -160,7 +164,7 @@
                       });
 
 
-                
+
 
                    }
                  }
