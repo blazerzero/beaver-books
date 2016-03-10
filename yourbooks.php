@@ -45,7 +45,13 @@
   								<span class="date">Posted: <?php echo htmlspecialchars($obj->dateposted) ?> by <?php echo htmlspecialchars($obj->onid) ?></span>
   							</div>
 
-  							<h3><?php echo htmlspecialchars($obj->price) ?></h3>
+  							<?php if ($obj->price[0] != '$') { ?>
+                  <h3><?php echo '$' . htmlspecialchars($obj->price) ?></h3>
+                <?php }
+                else { ?>
+                  <h3><?php echo htmlspecialchars($obj->price) ?></h3>
+                <?php } ?>
+                
                 <h4>Condition: <?php echo htmlspecialchars($obj->cond) ?></h4>
   						</div>
               <div class="extra content">
