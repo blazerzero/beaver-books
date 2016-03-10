@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <script type="text/javascript" src="./js-samples"></script>
 <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="./js-samples/geolocate/geometa.js"></script>
@@ -97,14 +98,18 @@ var circle = new google.maps.Circle({
   radius: 2000
 });
 
-'<?php echo "if ($result = $mysqli->query(\"select onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address,lat,lng from books\")) {" ?>'
-'<?php echo "while ($obj = $result->fetch_object()) {" ?>'
+while ('<?php $obj ?>') {
+
 var point = new google.maps.LatLng('<?php echo $obj->lat ?>','<?php echo $obj->lon ?>');
+alert(point);
+
 if (google.maps.geometry.spherical.computeDistanceBetween(point, circle.center) <= 2000) {
-  var newmarker = new google.maps.Marker({position:point,map:map,title:'<?php echo $obj->title ?>'});
+  newmarker(point);
 }
-'<?php echo "}" ?>'
-'<?php echo "}" ?>'
+}
+}
+
+function newmarker(point) {  return new google.maps.Marker({position:point,map:map,title:'<?php echo $obj->title ?>'}) };
 }
 
 function showError(error) {
