@@ -97,19 +97,6 @@ var circle = new google.maps.Circle({
   center: latlon,
   radius: 2000
 });
-
-while ('<?php $obj ?>') {
-
-var point = new google.maps.LatLng('<?php echo $obj->lat ?>','<?php echo $obj->lon ?>');
-alert(point);
-
-if (google.maps.geometry.spherical.computeDistanceBetween(point, circle.center) <= 2000) {
-  newmarker(point);
-}
-}
-}
-
-function newmarker(point) {  return new google.maps.Marker({position:point,map:map,title:'<?php echo $obj->title ?>'}) };
 }
 
 function showError(error) {
