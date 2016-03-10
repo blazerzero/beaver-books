@@ -78,7 +78,7 @@ mapholder.style.height = '500px';
 mapholder.style.width = '750px';
 
 var myOptions = {
-center:latlon,zoom:10,
+center:latlon,zoom:14,
 mapTypeId:google.maps.MapTypeId.ROADMAP,
 mapTypeControl:false,
 navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
@@ -86,6 +86,25 @@ navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
 
 var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
 var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+var circle = new google.maps.Circle({
+  strokeColor: '#FF0000',
+  strokeOpacity: 0.5,
+  strokeWeight: 2,
+  fillColor: '#FF0000',
+  fillOpacity: 0,
+  map: map,
+  center: latlon,
+  radius: 2000
+});
+
+'<?php echo "if ($result = $mysqli->query(\"select onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address,lat,lng from books\")) {" ?>'
+'<?php echo "while ($obj = $result->fetch_object()) {" ?>'
+var point = new google.maps.LatLng('<?php echo $obj->lat ?>','<?php echo $obj->lon ?>');
+if (google.maps.geometry.spherical.computeDistanceBetween(point, circle.center) <= 2000) {
+  var newmarker = new google.maps.Marker({position:point,map:map,title:'<?php echo $obj->title ?>'});
+}
+'<?php echo "}" ?>'
+'<?php echo "}" ?>'
 }
 
 function showError(error) {
