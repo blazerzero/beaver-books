@@ -57,6 +57,7 @@
 <center><div id="mapholder"></div></center>
 
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="./get_data.php"></script>
 
 
 <script>
@@ -108,7 +109,15 @@ alert("Data array made");
 
 alert("Right before ajax");
 
+$.ajax({
+        type:     "post",
+        url:      "get_data.php",
+        data:     $(this).serialize(),
+        dataType: "json"
+}).done(function(response) { data = response; };
+
 for (var i = 0; i < data.length; i++) {
+  alert("HERE");
   var latlon = new google.maps.LatLng(data[i].lat, data[i].lng);
   showbook(latlon, data[i].book, map);
 }
