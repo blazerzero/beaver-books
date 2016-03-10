@@ -5,19 +5,40 @@
 <?php $onid = htmlspecialchars(checkAuth(false)); ?>
 
 <script>
+// is_int not working
+function is_int(int_check){
+  for(var i=0; i< int_check.length; ++i){
+    for(var j =0; j<9; ++j){
+      if(int_check[i] == j || int_check[i] == '.'){
+        break;
+      }
+      return false
+    }
+  }
+  window.location.replace("./post.php");
+  return true;
+}
+
 function validateForm() {
     var x = document.forms["myForm"]["price"].value;
     var y = document.forms["myForm"]["isbn"].value;
     var z = document.forms["myForm"]["contact"].value;
 
+
     if (x == null || x == "") {
         alert("Price must be filled out");
         return false;
+    }
+    if(is_int(x) === false){
+      return false;
     }
 
     if (y == null || y == "") {
         alert("ISBN must be filled out");
         return false;
+    }
+    if(is_int(y) === false){
+      return false;
     }
 
     if (z == null || z == "") {
@@ -58,7 +79,7 @@ function validateForm() {
 
       <div class="ui form">
         <!--<form action="./post.php" method="POST" id="posting">-->
-        <form name= "myForm" action="./post.php" onsubmit="return validateForm()" method="POST" id="posting">
+        <form name= "myForm" onsubmit="return validateForm()" action="./post.php"  method="POST" id="posting">
           <div class="fields book">
             <input type="hidden" name="onid" value=<?php echo $onid ?>>
             <div class="field">

@@ -1,10 +1,8 @@
 <?php include "./header.php" ?>
 <?php date_default_timezone_set("America/Los_Angeles") ?>
-<<<<<<< HEAD
-=======
 <script type = "text/javascript" src = "./js/validation.js"></script>
 <!--  Above is form validation code-->
->>>>>>> 5edc6b3d573417c0ca8e760059e93dfac20f18fb
+
 <?php
 
 $date = new DateTime();
@@ -14,14 +12,6 @@ function test_input($data) {
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
-}
-
-
-function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
 }
 
 // mysql_query("INSERT INTO books (onid, dateposted) VALUES ('weisborj','Today hi')");
