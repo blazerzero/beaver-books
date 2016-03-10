@@ -105,3 +105,37 @@ ul li a:hover {
     background-color: #EE7600;
 }
 /*End of Navbar Config*******************************************/
+
+
+
+/*Img wrap Config*************************************************/
+.imgWrap {
+  position: relative;
+  height: 100px;
+  width: 257px;
+}
+
+.imgDescription {
+  position: relative;
+  top: -50;
+  bottom: 50px;
+  left: 100px;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+
+
+  visibility: hidden;
+  opacity: 0;
+
+
+  -webkit-transition: visibility opacity 0.2s;
+
+}
+
+
+.imgWrap:hover .imgDescription {
+  visibility: visible;
+  opacity: 1;
+}
+/*End of Img Wrap config**************************************/

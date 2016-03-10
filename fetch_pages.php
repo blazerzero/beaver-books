@@ -25,7 +25,7 @@ if(isset($_POST) && isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SER
 
 
 	//Limit our results within a specified range.
-	$results = $mysqli->prepare("SELECT onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address from books ORDER BY dateposted ASC LIMIT $page_position, $item_per_page");
+	$results = $mysqli->prepare("SELECT onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address from books ORDER BY dateposted DESC LIMIT $page_position, $item_per_page");
 	$results->execute(); //Execute prepared Query
 	$results->bind_result($onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $cond, $contact, $address); //bind variables to prepared statement
 

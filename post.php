@@ -5,14 +5,6 @@
 
 $date = new DateTime();
 
-?>
-
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script>
-// we would put js here if stuff didnt work later
-</script>
-<?php
-
 
 // mysql_query("INSERT INTO books (onid, dateposted) VALUES ('weisborj','Today hi')");
 
@@ -20,7 +12,7 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
   $sql->bind_param("sssisssssssdd", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address, $lat, $lng);
 
   $onid = $_POST["onid"];
-  $dateposted = $date->format('m-d-Y');
+  $dateposted = $date->format('m-d-Y H:i:s');
   $subject = $_POST["subject"];
   $coursenum = $_POST["coursenum"];
   $title = $_POST["title"];

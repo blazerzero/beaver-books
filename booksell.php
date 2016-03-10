@@ -97,7 +97,12 @@
                 <input type="text" placeholder="Give the full address of where you'd like to sell the book." name="address" id="address">
                 <input id="lat" name="lat" type="hidden"></input>
                 <input id="lon" name="lng" type="hidden"></input>
-                <input class="ui positive button" onclick = "inputDatabase()" value = "Add to Map!">
+
+                  <div class="imgWrap">
+                    <button class="ui positive button" onclick = "inputDatabase()" type="button">Add To Map</button>
+                    <center><p class="imgDescription">By Clicking this button you consent to sharing the entered address with other users within the Books Near Me feature.</p></center>
+                </div>
+
               </div>
             </div>
             <div class="field">
