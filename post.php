@@ -1,36 +1,47 @@
 <?php include "./header.php" ?>
 <?php date_default_timezone_set("America/Los_Angeles") ?>
-
+<script type = "text/javascript" src = "./js/validation.js"></script>
+<!--  Above is form validation code-->
 <?php
 
 $date = new DateTime();
 
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 
 // mysql_query("INSERT INTO books (onid, dateposted) VALUES ('weisborj','Today hi')");
 
 if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address, lat, lng) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
   $sql->bind_param("sssisssssssdd", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address, $lat, $lng);
 
-  $onid = $_POST["onid"];
-  $dateposted = $date->format('m-d-Y H:i:s');
-  $subject = $_POST["subject"];
-  $coursenum = $_POST["coursenum"];
-  $title = $_POST["title"];
-  $author = $_POST["author"];
-  $price = $_POST["price"];
-  $isbn = $_POST["isbn"];
-  $condition = $_POST["cond"];
 
-  $contact = $_POST["contact"];
-  $address = $_POST["address"];
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $onid = test_input($_POST["onid"]);
+    $dateposted = $date->format('m-d-Y H:i:s');
+    $subject = test_input($_POST["subject"]);
+    $coursenum = test_input($_POST["coursenum"]);
+    $title = test_input($_POST["title"]);
+    $author = test_input($_POST["author"]);
+    $price = test_input($_POST["price"]);
+    $isbn = test_input($_POST["isbn"]);
+    $condition = test_input($_POST["cond"]);
 
-  $lat = $_POST["lat"];
-  $lng = $_POST["lng"];
+    $contact = test_input($_POST["contact"]);
+    $address = test_input($_POST["address"]);
 
+    $lat = test_input($_POST["lat"]);
+    $lng = test_input($_POST["lng"]);
+  }
 
 
   $sql->execute();
   $sql->close();
+
+
 }
 
 else printf("Error: %s\n", $mysqli->error);
