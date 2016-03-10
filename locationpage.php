@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <script type="text/javascript" src="./js-samples"></script>
 <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="./js-samples/geolocate/geometa.js"></script>
@@ -6,6 +7,7 @@
 <?php include "./header.php" ?>
 
 <?php if (checkAuth(true) != "") { ?>
+
 
 <html>
   <head>
@@ -56,6 +58,7 @@
 
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
+
 <script>
 ///////////////////////////////////////////
 //GET LOCATION SCRIPT FOR CURRENT LOCATION
@@ -78,7 +81,7 @@ mapholder.style.height = '500px';
 mapholder.style.width = '750px';
 
 var myOptions = {
-center:latlon,zoom:10,
+center:latlon,zoom:14,
 mapTypeId:google.maps.MapTypeId.ROADMAP,
 mapTypeControl:false,
 navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
@@ -86,7 +89,41 @@ navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL}
 
 var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
 var marker = new google.maps.Marker({position:latlon,map:map,title:"You are here!"});
+var circle = new google.maps.Circle({
+  strokeColor: '#FF0000',
+  strokeOpacity: 0.5,
+  strokeWeight: 2,
+  fillColor: '#FF0000',
+  fillOpacity: 0,
+  map: map,
+  center: latlon,
+  radius: 2000
+});
+
+alert("Circle made");
+
+//var data = new Array();
+
+alert("Data array made");
+
+alert("Right before ajax");
+
+for (var i = 0; i < data.length; i++) {
+  var latlon = new google.maps.LatLng(data[i].lat, data[i].lng);
+  showbook(latlon, data[i].book, map);
 }
+
+alert("Done");
+
+}
+
+function showbook(latlon, title, map) {
+  var marker = new google.maps.Marker({position:latlon,map:map,title:title});
+}
+
+
+
+
 
 function showError(error) {
 switch(error.code) {

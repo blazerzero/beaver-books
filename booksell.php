@@ -124,10 +124,10 @@ function validateForm() {
                 <input id="lat" name="lat" type="hidden"></input>
                 <input id="lon" name="lng" type="hidden"></input>
 
-                  <div class="imgWrap">
-                    <button class="ui positive button" onclick = "inputDatabase()" type="button">Add To Map</button>
-                    <center><p class="imgDescription">By Clicking this button you consent to sharing the entered address with other users within the Books Near Me feature.</p></center>
-                </div>
+                <p>
+                  <button class="ui positive button" onclick = "inputDatabase()" type="button">Add To Map</button>
+                  By clicking this button, you consent to sharing the entered address with other users within the Books Near You feature.
+                </p>
 
               </div>
             </div>
