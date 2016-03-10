@@ -4,9 +4,22 @@
 <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="./js-samples/geolocate/geometa.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
 <?php include "./header.php" ?>
 
 <?php if (checkAuth(true) != "") { ?>
+
+<?php
+$bookdata = array();
+
+if ($result = $mysqli->query("SELECT onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address,lat,lng from books ORDER BY dateposted DESC")) {
+  while ($obj = $result->fetch_object()) {
+    //echo $obj->lat . " " . $obj->lng . " " . $obj->title;
+    $bookdata[] = array($obj->lat, $obj->lng, $obj->title);
+    echo($bookdata[sizeof($bookdata)-1][0]);
+  }
+}
+?>
 
 
 <html>
@@ -109,15 +122,12 @@ alert("Data array made");
 
 alert("Right before ajax");
 
-$.ajax({
-        type:     "post",
-        url:      "get_data.php",
-        data:     $(this).serialize(),
-        dataType: "json"
-}).done(function(response) { data = response; };
+var data = [];
+
+data = <?php echo json_encode($bookdata); ?>;
+alert(data.length);
 
 for (var i = 0; i < data.length; i++) {
-  alert("HERE");
   var latlon = new google.maps.LatLng(data[i].lat, data[i].lng);
   showbook(latlon, data[i].book, map);
 }
