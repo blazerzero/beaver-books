@@ -4,6 +4,29 @@
 <?php if (checkAuth(true) != "") { ?>
 <?php $onid = htmlspecialchars(checkAuth(false)); ?>
 
+<script>
+function validateForm() {
+    var x = document.forms["myForm"]["price"].value;
+    var y = document.forms["myForm"]["isbn"].value;
+    var z = document.forms["myForm"]["contact"].value;
+
+    if (x == null || x == "") {
+        alert("Price must be filled out");
+        return false;
+    }
+
+    if (y == null || y == "") {
+        alert("ISBN must be filled out");
+        return false;
+    }
+
+    if (z == null || z == "") {
+        alert("Contact info must be filled out");
+        return false;
+    }
+}
+</script>
+
 <html>
   <head>
     <title>Sell Your Book</title>
@@ -34,7 +57,8 @@
     <div class="textbody">
 
       <div class="ui form">
-        <form action="./post.php" method="POST" id="posting">
+        <!--<form action="./post.php" method="POST" id="posting">-->
+        <form name= "myForm" action="./post.php" onsubmit="return validateForm()" method="POST" id="posting">
           <div class="fields book">
             <input type="hidden" name="onid" value=<?php echo $onid ?>>
             <div class="field">
@@ -56,10 +80,12 @@
             <div class="field">
               <label>Price</label>
               <input type="text" name="price" id="price" placeholder="Price">
+              <span class="error"> <?php echo '* Required';?></span>
             </div>
             <div class="field">
               <label>ISBN Number</label>
-              <input type="text" name="isbn" id="isbn" placeholder="ISBN">
+              <input type="text" name="isbn" id="isbn" placeholder="ISBN (no dashes)">
+              <span class="error"> <?php echo '* Required';?></span>
             </div>
           </div>
           <div>
@@ -110,6 +136,7 @@
               <div class="field">
               <!--  <i class="user icon" style="zoom:150%"></i> -->
                 <input type="text" placeholder="Give a phone number, email, or social media URL." name="contact" id="contact">
+                <span class="error"> <?php echo '* Required';?></span>
               </div>
             </div>
         <!--    <script>

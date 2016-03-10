@@ -1,33 +1,37 @@
 <?php include "./header.php" ?>
 <?php date_default_timezone_set("America/Los_Angeles") ?>
-
 <?php
 
 $date = new DateTime();
 
+
+
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}
 
 // mysql_query("INSERT INTO books (onid, dateposted) VALUES ('weisborj','Today hi')");
 
 if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, coursenum, title, author, price, isbn, cond, contact, address, lat, lng) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)")) {
   $sql->bind_param("sssisssssssdd", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address, $lat, $lng);
 
-  $onid = $_POST["onid"];
+  $onid = test_input($_POST["onid"]);
   $dateposted = $date->format('m-d-Y H:i:s');
-  $subject = $_POST["subject"];
-  $coursenum = $_POST["coursenum"];
-  $title = $_POST["title"];
-  $author = $_POST["author"];
-  $price = $_POST["price"];
-  $isbn = $_POST["isbn"];
-  $condition = $_POST["cond"];
-
-  $contact = $_POST["contact"];
-  $address = $_POST["address"];
+  $subject = test_input($_POST["subject"]);
+  $coursenum = test_input($_POST["coursenum"]);
+  $title = test_input($_POST["title"]);
+  $author = test_input($_POST["author"]);
+  $price = test_input($_POST["price"], "Enter the price");
+  $isbn = test_input($_POST["isbn"], "Enter an ISBN number");
+  $condition = test_input($_POST["cond"]);
+  $contact = test_input($_POST["contact"], "Enter contact info");
+  $address = test_input($_POST["address"]);
 
   $lat = $_POST["lat"];
   $lng = $_POST["lng"];
-
-
 
   $sql->execute();
   $sql->close();
