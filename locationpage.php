@@ -14,9 +14,7 @@ $bookdata = array();
 
 if ($result = $mysqli->query("SELECT onid,dateposted,subject,coursenum,title,author,price,isbn,cond,contact,address,lat,lng from books ORDER BY dateposted DESC")) {
   while ($obj = $result->fetch_object()) {
-    //echo $obj->lat . " " . $obj->lng . " " . $obj->title;
-    $bookdata[] = array($obj->lat, $obj->lng, $obj->title);
-    echo($bookdata[sizeof($bookdata)-1][0]);
+    $bookdata[] = array($obj->lat, $obj->lng, $obj->title, $obj->onid);
   }
 }
 ?>
@@ -114,25 +112,19 @@ var circle = new google.maps.Circle({
   radius: 2000
 });
 
-alert("Circle made");
-
-//var data = new Array();
-
-alert("Data array made");
-
-alert("Right before ajax");
-
 var data = [];
 
 data = <?php echo json_encode($bookdata); ?>;
-alert(data.length);
 
 for (var i = 0; i < data.length; i++) {
-  var latlon = new google.maps.LatLng(data[i].lat, data[i].lng);
-  showbook(latlon, data[i].book, map);
+  var latlon = new google.maps.LatLng(data[i][0], data[i][1]);
+  var by = "by ";
+  var user = by.concat(data[i][3]);
+  var title = "\"".concat(data[i][2]);
+  title = title.concat("\" ");
+  title = title.concat(user);
+  showbook(latlon, title, map);
 }
-
-alert("Done");
 
 }
 

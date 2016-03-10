@@ -5,19 +5,6 @@
 <?php $onid = htmlspecialchars(checkAuth(false)); ?>
 
 <script>
-// is_int not working
-function is_int(int_check){
-  for(var i=0; i< int_check.length; ++i){
-    for(var j =0; j<9; ++j){
-      if(int_check[i] == j || int_check[i] == '.'){
-        break;
-      }
-      return false
-    }
-  }
-  window.location.replace("./post.php");
-  return true;
-}
 
 function validateForm() {
     var x = document.forms["myForm"]["price"].value;
@@ -29,16 +16,10 @@ function validateForm() {
         alert("Price must be filled out");
         return false;
     }
-    if(is_int(x) === false){
-      return false;
-    }
 
     if (y == null || y == "") {
         alert("ISBN must be filled out");
         return false;
-    }
-    if(is_int(y) === false){
-      return false;
     }
 
     if (z == null || z == "") {

@@ -41,6 +41,7 @@
   							<div class="header"> Course: <?php echo htmlspecialchars($obj->subject) . " " . htmlspecialchars($obj->coursenum) ?> </div>
                 <div class="header"> Title: <?php echo htmlspecialchars($obj->title) ?> </div>
                 <div class="header"> Author: <?php echo htmlspecialchars($obj->author) ?> </div>
+                <div class="header"> ISBN: <?php echo htmlspecialchars($obj->isbn) ?> </div>
   							<div class="meta">
   								<span class="date">Posted: <?php echo htmlspecialchars($obj->dateposted) ?> by <?php echo htmlspecialchars($obj->onid) ?></span>
   							</div>
