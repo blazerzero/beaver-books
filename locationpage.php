@@ -8,6 +8,7 @@
 
 <?php if (checkAuth(true) != "") { ?>
 
+
 <html>
   <head>
     <title>Books Near You</title>
@@ -57,6 +58,7 @@
 
 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 
+
 <script>
 ///////////////////////////////////////////
 //GET LOCATION SCRIPT FOR CURRENT LOCATION
@@ -97,7 +99,31 @@ var circle = new google.maps.Circle({
   center: latlon,
   radius: 2000
 });
+
+alert("Circle made");
+
+//var data = new Array();
+
+alert("Data array made");
+
+alert("Right before ajax");
+
+for (var i = 0; i < data.length; i++) {
+  var latlon = new google.maps.LatLng(data[i].lat, data[i].lng);
+  showbook(latlon, data[i].book, map);
 }
+
+alert("Done");
+
+}
+
+function showbook(latlon, title, map) {
+  var marker = new google.maps.Marker({position:latlon,map:map,title:title});
+}
+
+
+
+
 
 function showError(error) {
 switch(error.code) {
