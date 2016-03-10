@@ -2,6 +2,7 @@
 <?php date_default_timezone_set("America/Los_Angeles") ?>
 <script type = "text/javascript" src = "./js/validation.js"></script>
 <!--  Above is form validation code-->
+
 <?php
 
 $date = new DateTime();
@@ -19,6 +20,7 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
   $sql->bind_param("sssisssssssdd", $onid, $dateposted, $subject, $coursenum, $title, $author, $price, $isbn, $condition, $contact, $address, $lat, $lng);
 
 
+
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $onid = test_input($_POST["onid"]);
     $dateposted = $date->format('m-d-Y H:i:s');
@@ -30,13 +32,14 @@ if ($sql = $mysqli->prepare("INSERT INTO books (onid, dateposted, subject, cours
     $isbn = test_input($_POST["isbn"]);
     $condition = test_input($_POST["cond"]);
 
+
     $contact = test_input($_POST["contact"]);
     $address = test_input($_POST["address"]);
+
 
     $lat = test_input($_POST["lat"]);
     $lng = test_input($_POST["lng"]);
   }
-
 
   $sql->execute();
   $sql->close();

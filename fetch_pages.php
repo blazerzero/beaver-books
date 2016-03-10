@@ -40,6 +40,7 @@ echo'<div class="ui relaxed grid books">';
           echo'<div class="header"> Course: ' . htmlspecialchars($subject) . htmlspecialchars($coursenum) . '</div>';
           echo'<div class="header"> Title: '. htmlspecialchars($title)  .'</div>';
           echo'<div class="header"> Author: '. htmlspecialchars($author) .'</div>';
+					echo'<div class="header"> ISBN: '. htmlspecialchars($isbn) .'</div>';
           echo'<div class="meta">';
             echo'<span class="date">Posted: '. htmlspecialchars($dateposted) .' by '. htmlspecialchars($onid) .'</span>';
           echo'</div>';
